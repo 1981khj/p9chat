@@ -67,7 +67,7 @@
         contextMenu();
 	});
     
-    //전체 방을 활성화 시키지는 않지만 대화는 해당 창에 출력이 되도록 한다.
+    // 전체 방을 활성화 시키지는 않지만 대화는 해당 창에 출력이 되도록 한다.
     socket.on('publicmessage', function(logdata) {
         console.log("socket:::publicmessage");
         console.log(logdata);        
@@ -213,7 +213,28 @@
             
             return false;
         }
-    });    
+    });
+    
+    $("#nickList ul li").live("click",function(){        
+        /*if($(this).hasClass('me')){
+            return false;
+        }*/
+        //자신의 방이 활성화 되는 것으로 사용 가능..
+        return false;        
+    });
+    
+    $("#nickList ul li").live("dblclick",function(){        
+        if($(this).hasClass('me')){
+            return false;
+        }
+        console.log("dblclick");
+        socket.emit('makePrivateRoom',$.trim($(this).text()));
+    });
+    
+    //우측 마우스시 컨텍스트메뉴 안나오도록 설정    
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
     
     // 사용자의 대화명 입력 및 그에 따른 대화방 보이기를 컨트롤 한다. 
     // socket join
