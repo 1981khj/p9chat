@@ -239,7 +239,8 @@
     });
     
     //좌우 마우스 이벤트 추가
-    $('.messageLog').swipe();
+    //$('.messageLog').swipe();
+    $('#chat_wrap').swipe();
     
     // 사용자의 대화명 입력 및 그에 따른 대화방 보이기를 컨트롤 한다. 
     // socket join
