@@ -52,33 +52,18 @@ var io = require('socket.io').listen(app);
 
 var userlist = new Data.Hash();
 
-io.configure(function(){
-    io.enable('browser client minification');  // send minified client
-    io.enable('browser client etag');          // apply etag caching logic based on version number
-    io.enable('browser client gzip');          // gzip the file
-    io.enable('browser client etag');
-    io.set('log level', 2);
-    io.set('close timeout', 600);
-    io.set('transports', [
-        'websocket'
-        , 'flashsocket'
-        , 'htmlfile'
-        , 'xhr-polling'
-        , 'jsonp-polling'
-    ]); 
-});
 /*io.configure(function(){
     io.set('log level', 2);
     io.set('close timeout', 10);
     
 });*/
 
-/*io.configure('production', function(){
+io.configure('production', function(){
     io.enable('browser client minification');  // send minified client
     io.enable('browser client etag');          // apply etag caching logic based on version number
     io.enable('browser client gzip');          // gzip the file
     io.enable('browser client etag');
-    io.set('log level', 1);
+    io.set('log level', 2);
     io.set('close timeout', 600);
     io.set('transports', [
         'websocket'
@@ -91,7 +76,7 @@ io.configure(function(){
 
 io.configure('development', function(){
     io.set('transports', ['websocket']);
-});*/
+});
 
 io.sockets.on('connection', function(socket) {
     //console.log(userlist);
