@@ -216,20 +216,22 @@
     });
     
     $("#nickList ul li").live("click",function(){        
-        /*if($(this).hasClass('me')){
+        if($(this).hasClass('me')){
             return false;
-        }*/
+        }
+        
+        socket.emit('makePrivateRoom',$.trim($(this).text()));
         //자신의 방이 활성화 되는 것으로 사용 가능..
         return false;        
     });
     
-    $("#nickList ul li").live("dblclick",function(){        
+    /*$("#nickList ul li").live("dblclick",function(){        
         if($(this).hasClass('me')){
             return false;
         }
         console.log("dblclick");
         socket.emit('makePrivateRoom',$.trim($(this).text()));
-    });
+    });*/
     
     //우측 마우스시 컨텍스트메뉴 안나오도록 설정    
     $(document).bind("contextmenu",function(e){
