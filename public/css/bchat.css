@@ -111,30 +111,14 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endCo
 #join .join_inwrap{margin-top:40px;padding-top:80px;}
 #join .join_inwrap p{padding-bottom:10px;font-size:15px;}
 #join #nick_ipt{border:1px solid #708499;height:14px;font-weight:bold;width:200px;padding:5px;}
+/*
+@media all and (max-width:600px){
+#header{position:static;}
+#nickList{width:100%;position:static;height:auto;max-height:150px;overflow:auto;border:0;}
+#messageLog{width:100%;height:auto;position:static;border-top:1px solid #b6cbdc;border-right:0;margin-right:0;}
+#nickList ul,#messageLog ul{margin-top:0;}
+#messageSend #msgArea{width:60%}
+}
 
-@media all and (max-width:600px) and (orientation: portrait){
-#header{width:100%;min-width:0;}
-#contents,#messageSend{min-width:0;}
-#header .chat_tabs{display:none;}
-.messageLog{display:none;}
-#messageSend{display:none;}
-#nickList{width:100%;}
-#nickList li{font-size:1.2em;font-weight:bold;margin:10px 0;}
-.toggle_on .messageLog{display:block;}
-.toggle_on #messageSend{display:block;}
-.toggle_on #header{height:100px;}
-.toggle_on #header .chat_tabs{display:block;position:static;margin-top:20px;border-top:1px solid #5c8397}
-.toggle_on #nickList{display:none}
-.toggle_on .messageLog,.toggle_on .ipt_wrap{margin-left:0 !important;}
-.toggle_on .messageLog ul{margin-top:100px;}
-.btn_toggle{display:block !important;position:fixed;bottom:0;width:100%;height:20px;z-index:10;background-color:#000;background:-webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#cccccc));  
-background:-moz-linear-gradient(top,  #f4f4f4,  #cccccc);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#cccccc');}
-.btn_toggle a{display:block;width:auto;height:20px;text-align:center;color:#555;border:1px solid #5c8397;}
-.toggle_on .btn_toggle a.on{display:none}
-.toggle_on .btn_toggle a.off{display:block !important;}
-.toggle_on .btn_toggle{top:40px;}
-}
-@media all and (orientation:landscape){
-#header{width:100%;min-width:0;}
-#contents,#messageSend{min-width:0;}
-}
+
+*/

@@ -45,7 +45,13 @@ html
                         p 대화명을 입력하세요!
                         input(id="nick_ipt", type="text", placeholder="NickName")
                         button#enter 들어가기
+
             ul#chatMenu.contextMenu
                 li.invite
                     a(href="#invite") 대화하기
+            .btn_toggle(style="display:none")
+                a.off(href="#", style="display:none")▼
+                a.on(href="#")▲
+
+                
             script(type='text/javascript', src='/js/webchat.js')

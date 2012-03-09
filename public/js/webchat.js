@@ -225,6 +225,19 @@
         return false;        
     });
     
+    $("div.btn_toggle").on("click",function(e){
+        console.log(e);
+        console.log($(e.target).prop("class"));
+        if($(e.target).prop("class")=="on"){
+            $("#chat_wrap").addClass("toggle_on");
+        }else{
+            $("#chat_wrap").removeClass("toggle_on");
+        }
+        return false;
+    });
+    
+    
+    
     /*$("#nickList ul li").live("dblclick",function(){        
         if($(this).hasClass('me')){
             return false;
@@ -234,9 +247,9 @@
     });*/
     
     //우측 마우스시 컨텍스트메뉴 안나오도록 설정    
-    $(document).bind("contextmenu",function(e){
+    /*$(document).bind("contextmenu",function(e){
         return false;
-    });
+    });*/
     
     //좌우 마우스 이벤트 추가
     //$('.messageLog').swipe();
