@@ -41,24 +41,39 @@ app.get('/500', function(req, res) {
 });
 
 app.error(function(err, req, res, next){
-    console.log(err);
+    //console.log(err);
     res.render('500.jade', { error: err });
 });
 
 /**socket io 처리 영역*/
-var nicklist = {};
+//var nicklist = {};
 var io = require('socket.io').listen(app);
 //var Chat = require('./chat');
 
 var userlist = new Data.Hash();
 
+io.configure(function(){
+    io.enable('browser client minification');  // send minified client
+    io.enable('browser client etag');          // apply etag caching logic based on version number
+    io.enable('browser client gzip');          // gzip the file
+    io.enable('browser client etag');
+    io.set('log level', 2);
+    io.set('close timeout', 600);
+    io.set('transports', [
+        'websocket'
+        , 'flashsocket'
+        , 'htmlfile'
+        , 'xhr-polling'
+        , 'jsonp-polling'
+    ]); 
+});
 /*io.configure(function(){
     io.set('log level', 2);
     io.set('close timeout', 10);
     
 });*/
 
-io.configure('production', function(){
+/*io.configure('production', function(){
     io.enable('browser client minification');  // send minified client
     io.enable('browser client etag');          // apply etag caching logic based on version number
     io.enable('browser client gzip');          // gzip the file
@@ -76,16 +91,16 @@ io.configure('production', function(){
 
 io.configure('development', function(){
     io.set('transports', ['websocket']);
-});
+});*/
 
 io.sockets.on('connection', function(socket) {
-    console.log(userlist);
+    //console.log(userlist);
     socket.on('join', function(nick){
         var usernames = userlist.values();
         var usernamesExist = usernames.filter(function(element) {
             return (element === nick);
         });
-        console.log(usernamesExist);
+        //console.log(usernamesExist);
         if (usernamesExist.length > 0) {
             io.sockets.socket(socket.id).emit('nickIsAlreadyExist', nick);
             return false;            
@@ -93,8 +108,8 @@ io.sockets.on('connection', function(socket) {
             userlist.set(socket.id, nick);
             socket.nickname = nick;
             var nicklist = userlist.values();
-            console.log(userlist);
-            console.log(nicklist);
+            //console.log(userlist);
+            //console.log(nicklist);
             io.sockets.socket(socket.id).emit('joinok', nick);
             io.sockets.emit('nicknames', nicklist);
             //io.sockets.emit('enterlog', userlist.get(socket.id));
@@ -103,7 +118,7 @@ io.sockets.on('connection', function(socket) {
 	});
     
     socket.on('makeRandomRoom', function(toName){
-        console.log("makeRandomRoom");
+        //console.log("makeRandomRoom");
         var sRoomName = Chat.makeRandomName(8);
         var usernames = userlist.values();
         var userIdx = usernames.indexOf(toName);
@@ -114,9 +129,9 @@ io.sockets.on('connection', function(socket) {
 	});
     
     socket.on('makePrivateRoom', function(toName){
-        console.log("makePrivateRoom");
-        console.log(toName);        
-        console.log(userlist.get(socket.id));
+        //console.log("makePrivateRoom");
+        //console.log(toName);        
+        //console.log(userlist.get(socket.id));
         
         var usernames = userlist.values();
         var userIdx = usernames.indexOf(toName);
