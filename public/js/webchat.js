@@ -236,7 +236,14 @@
         return false;
     });
     
+    //우측 마우스시 컨텍스트메뉴 안나오도록 설정    
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
     
+    //좌우 마우스 이벤트 추가
+    //$('.messageLog').swipe();
+    //$('#chat_wrap').swipe();
     
     /*$("#nickList ul li").live("dblclick",function(){        
         if($(this).hasClass('me')){
@@ -246,14 +253,7 @@
         socket.emit('makePrivateRoom',$.trim($(this).text()));
     });*/
     
-    //우측 마우스시 컨텍스트메뉴 안나오도록 설정    
-    /*$(document).bind("contextmenu",function(e){
-        return false;
-    });*/
-    
-    //좌우 마우스 이벤트 추가
-    //$('.messageLog').swipe();
-    $('#chat_wrap').swipe();
+
     
     // 사용자의 대화명 입력 및 그에 따른 대화방 보이기를 컨트롤 한다. 
     // socket join
