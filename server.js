@@ -163,7 +163,8 @@ io.sockets.on('connection', function(socket) {
         userlist.del(socket.id);
         var nicklist = userlist.values();
         
-        io.sockets.emit('nicknames', nicklist);        
+        io.sockets.emit('nicknames', nicklist);
+        //socket.emit('exit');
 	});
 });
 
