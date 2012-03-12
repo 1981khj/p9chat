@@ -52,11 +52,11 @@ var io = require('socket.io').listen(app);
 
 var userlist = new Data.Hash();
 
-io.configure(function(){
+/*io.configure(function(){
     io.set('log level', 2);
-    io.set('close timeout', 3000);
+    io.set('close timeout', 10);
     
-});
+});*/
 
 io.configure('production', function(){
     io.enable('browser client minification');  // send minified client
@@ -64,7 +64,7 @@ io.configure('production', function(){
     io.enable('browser client gzip');          // gzip the file
     io.enable('browser client etag');
     io.set('log level', 2);
-    io.set('close timeout', 3000);
+    io.set('close timeout', 1500);
     io.set('transports', [
         'websocket'
         , 'flashsocket'
@@ -163,8 +163,7 @@ io.sockets.on('connection', function(socket) {
         userlist.del(socket.id);
         var nicklist = userlist.values();
         
-        io.sockets.emit('nicknames', nicklist);
-        //socket.emit('exit');
+        io.sockets.emit('nicknames', nicklist);        
 	});
 });
 
