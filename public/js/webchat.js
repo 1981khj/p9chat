@@ -5,7 +5,7 @@
     //var socket = io.connect('http://p9chat.hjkim.c9.io');
     
     //for deploy
-    var socket = io.connect('http://p9chat.herokuapp.com/');
+	var socket = io.connect('http://p9chat.herokuapp.com/');
     var joined = false;
 
     // 서비스에 접속한 경우 자신의 대화명을 좌측 상단 아이콘 옆에 출력
@@ -44,6 +44,10 @@
         if(joined && logdata!=null)
             notificationMsg(logdata+" 퇴장하였습니다.");
 	});
+    
+    /*socket.on('exit', function(logdata) {
+        window.location.reload();
+	});*/
 
 
     // 왼쪽에 사용자 리스트를 그려주는 기능
@@ -115,9 +119,6 @@
             makeTab(data.id, data.name);
             makeTabContainer(data.id);
             $(".chat_tabs li").last().trigger("click");
-            if($("div.btn_toggle").is(':visible')){
-                $("#chat_wrap").addClass("toggle_on");
-            }
             notificationMsg(data.name+" 님과의 일대일 대화방을 생성");
         }
     });
@@ -238,11 +239,11 @@
         }
         return false;
     });
-        
+    
     //우측 마우스시 컨텍스트메뉴 안나오도록 설정    
-    /*$(document).bind("contextmenu",function(e){
+    $(document).bind("contextmenu",function(e){
         return false;
-    });*/
+    });
     
     //좌우 마우스 이벤트 추가
     //$('.messageLog').swipe();

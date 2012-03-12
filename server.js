@@ -164,6 +164,7 @@ io.sockets.on('connection', function(socket) {
         var nicklist = userlist.values();
         
         io.sockets.emit('nicknames', nicklist);
+        //socket.emit('exit');
 	});
 });
 

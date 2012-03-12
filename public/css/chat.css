@@ -112,7 +112,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endCo
 #join .join_inwrap p{padding-bottom:10px;font-size:15px;}
 #join #nick_ipt{border:1px solid #708499;height:14px;font-weight:bold;width:200px;padding:5px;}
 
-@media all and (max-width:600px) and (orientation: portrait){
+@media all and (max-width:600px){
 #header{width:100%;min-width:0;}
 #contents,#messageSend{min-width:0;}
 #header .chat_tabs{display:none;}
@@ -134,7 +134,7 @@ background:-moz-linear-gradient(top,  #f4f4f4,  #cccccc);filter:progid:DXImageTr
 .toggle_on .btn_toggle a.off{display:block !important;}
 .toggle_on .btn_toggle{top:40px;}
 }
-@media all and (orientation:landscape){
+/*@media all and (max-height:600px) and (orientation:landscape){
 #header{width:100%;min-width:0;}
 #contents,#messageSend{min-width:0;}
-}
+}*/
