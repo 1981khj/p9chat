@@ -100,7 +100,7 @@ io.sockets.on('connection', function(socket) {
             //io.sockets.emit('enterlog', userlist.get(socket.id));
             socket.broadcast.emit('enterlog',userlist.get(socket.id));
         }
-	});
+    });
     
     socket.on('makeRandomRoom', function(toName){
         //console.log("makeRandomRoom");
